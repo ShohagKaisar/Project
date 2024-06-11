@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+.main-div{
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(red, yellow, blue);
+    overflow: hidden;
+}
+.container{
+    margin: 0 auto;
+    box-shadow: 2px 2px 5px gray;
+    width: 300px;
+    display: flex;
+    box-sizing: border-box;
+    padding: 13px;
+    border-radius: 10px;
+    justify-content: center;
+}
+.input{
+    outline: none;
+    box-shadow: 2px 2px 5px rgb(5, 94, 177);
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    padding-left: 10px;
+    font-size: 20px;
+}
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input[type=number] {
+  -moz-appearance: textfield;
+}
+::placeholder {
+    color: red;
+    font-size: 10px;
+}
+button{
+    box-shadow: 2px 2px 5px rgb(5, 94, 177);
+    margin-left: 20px;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    font-family:Geneva, Tahoma, sans-serif;
+}
+.number-div{
+    padding: 15px;
+    box-shadow: 2px 2px 5px gray;
+    margin: 10px auto;
+    display: flex;
+    max-width: 40%  ;
+    justify-content: space-around;
+}
+.number1,.number2{
+    margin-top: 5px;
+    margin-left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: aqua;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 45px;
+}
+.pr{
+    padding-top: 10px;
+    margin: 20px auto;
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 50%;
+    height: 50px;
+    background-color: chocolate;
+    box-shadow: 2px 2px 5px gray;
+    font-weight: bold;
+}
+.title{
+    padding: 5px;
+    width: 200px;
+    margin: 0 auto;
+}
+    </style>
+</head>
+<body>
+    <div class="main-div">
+        <p class="title">Guess The Number Game</p>
+        <div class="container">
+            <input class="input" type="number" placeholder="Please Input The Number" min="1" max="10">
+            <button onclick="press()">Submit</button>
+        </div>
+        <div class="number-div">
+                <div>
+                    <p>Random Number</p>
+                    <p class="number1"></p>
+                </div>
+                <div>
+                    <p>Your Number</p>
+                    <p class="number2"></p>
+                </div>
+        </div>
+        <p class="pr"></p>
+    </div>
+   
+
+
+    <script>
+        function press(){
+            let x = Math.ceil(Math.random() * 10);
+            document.querySelector(".number1").innerHTML = x;
+            console.log(x);
+            let inputValue = document.querySelector(".input").value;
+            if(inputValue > 10){
+                alert("PLease input the number bellow or Equal 10");
+            }
+            else if(inputValue == ""){
+                alert("Please input Number first");
+            }
+            else{
+                if(inputValue == x){
+                    document.querySelector(".pr").innerHTML = "Congratulations";
+                    document.querySelector(".pr").style.color = "Green";
+                }
+                else{
+                    document.querySelector(".pr").innerHTML = ("Please Try Again");
+                    document.querySelector(".pr").style.color = "red";
+                }
+                document.querySelector(".number2").innerHTML = inputValue;
+            }
+            document.querySelector(".input").value = "";
+            console.log(inputValue);
+        }
+
+    </script>
+</body>
+</html>
